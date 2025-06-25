@@ -7,7 +7,7 @@
   <meta name="keywords" content="Ferienhäuser, Norditalien, Urlaub, Italien, Comer See, Ligurien, Adria, Gardasee">
   <meta property="og:title" content="Vacation Homes by Charlie Fox">
   <meta property="og:description" content="Traumhafte Ferienhäuser in Norditalien mit persönlicher Betreuung und authentischem Charme.">
-  <meta property="og:image" content="/assets/images/Firmenlogo_2.0.png">
+  <meta property="og:image" content="/assets/images/Firmenlogo_2.1.png">
   <meta property="og:url" content="https://yourwebsite.com">
   <meta name="twitter:card" content="summary_large_image">
   <title>Vacation Homes by Charlie Fox</title>
@@ -15,7 +15,7 @@
   <style>
     :root {
       --black: #1A1A1A;
-      --yellow: #FFB500; /* NEU: Gelb auf #FFB500 geändert */
+      --yellow: #FFB500;
       --green: #009246;
       --white: #FFFFFF;
       --red: #CE2B37;
@@ -36,12 +36,11 @@
       width: 100vw;
       z-index: 1000;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      /* position: fixed; */
-      /* top: 2.2em; */
+      position: relative;
     }
     nav {
       display: flex;
-      justify-content: center; /* Zentriert den Inhalt horizontal */
+      justify-content: center; /* statt space-between */
       align-items: center;
       max-width: 1200px;
       margin: 0 auto;
@@ -53,8 +52,6 @@
       gap: 3rem;
       margin: 0;
       padding: 0;
-      justify-content: center; /* Optional, falls nötig */
-      align-items: center;
     }
     nav a {
       color: var(--black);
@@ -69,14 +66,13 @@
       text-shadow: 0 0 5px var(--yellow);
     }
     .hero {
-      /* height: 100vh;  <-- Entfernen! */
       min-height: 100vh;
-      padding-top: 7.5em; /* Höhe von Disclaimer + Header + etwas Abstand */
+      padding-top: 7.5em;
       position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start; /* Von oben statt zentriert */
+      justify-content: flex-start;
       text-align: center;
       background: none;
     }
@@ -106,7 +102,7 @@
       overflow: hidden;
       position: relative;
       margin-top: 2rem;
-      min-height: 480px; /* Erhöhe die Mindesthöhe */
+      min-height: 480px;
       display: flex;
       align-items: center;
     }
@@ -120,7 +116,7 @@
       align-items: center;
       justify-content: center;
       gap: 2rem;
-      min-height: 480px; /* Erhöhe die Mindesthöhe */
+      min-height: 480px;
     }
     .slide-content {
       display: flex;
@@ -130,29 +126,21 @@
       border-radius: 1rem;
       padding: 2rem;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      min-height: 400px; /* Optional: Inhalt höher */
+      min-height: 400px;
     }
     .disclaimer {
-      /* position: fixed; */
-      /* top: 0; */
-      /* left: 0; */
-      /* width: 100vw; */
-      /* z-index: 1001; */
       padding: 0.4rem 1.2rem;
       min-height: unset;
       height: auto;
       font-size: 1.1rem;
       line-height: 1.3;
-      background: linear-gradient(90deg, #009246 0%, #fff 33%, #fff 66%, #CE2B37 100%);
+      background: #fff7f0;
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0;
       border-radius: 0;
       box-shadow: 0 4px 16px rgba(0,0,0,0.07);
-    }
-    .disclaimer::before {
-      content: none; /* Smiley/Flagge entfernt */
     }
     .disclaimer p {
       display: flex;
@@ -196,6 +184,37 @@
         text-align: center;
       }
     }
+    .social-share-buttons {
+      position: absolute;
+      top: 1.2rem;
+      right: 2rem;
+      display: flex;
+      gap: 1rem;
+      z-index: 10;
+    }
+    .share-btn {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      border: 2px solid var(--yellow); /* <-- Gelbe Umrandung */
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      background: var(--white);
+    }
+    .share-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      border-color: var(--red); /* Beispiel: Rot beim Hover */
+    }
+    .whatsapp { border-color: #d7b026; }
+    .x { border-color: #d7b026; }
+    .instagram { border-color: #d7b026; }
+    .share-icon {
+      width: 24px;
+      height: 24px;
+    }
     .slide-text {
       flex: 1;
       text-align: left;
@@ -217,7 +236,7 @@
     .slide-img img {
       width: 100%;
       max-width: 600px;
-      height: 340px; /* Erhöhe die Bildhöhe */
+      height: 340px;
       object-fit: cover;
       border-radius: 1rem;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -457,58 +476,31 @@
     footer a:hover {
       color: var(--yellow);
     }
-    /* Social Media Icons Styling */
-    .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
-    .social-icons a {
-      display: inline-flex;
-      align-items: center;
-      transition: transform 0.2s;
-    }
-    .social-icons a:hover {
-      transform: scale(1.15);
-    }
-    .social-icons-header {
-      display: flex;
-      gap: 1.2rem;
-      align-items: center;
-      margin-left: 2rem;
-    }
-    .social-icons-header a {
-      display: inline-flex;
-      align-items: center;
-      transition: transform 0.2s;
-    }
-    .social-icons-header a:hover {
-      transform: scale(1.18);
-      filter: drop-shadow(0 0 4px var(--yellow));
-    }
     @media (max-width: 600px) {
       .disclaimer {
         padding: 0.7rem 0.5rem;
         font-size: 0.95rem;
       }
-      .disclaimer::before {
-        font-size: 1.3rem;
-        margin-right: 0.5rem;
-      }
-      .social-icons-header svg {
-        width: 32px !important;
-        height: 32px !important;
-      }
-      .social-icons-header {
+      .social-share-buttons {
         gap: 0.7rem;
-        margin-left: 0.5rem;
+      }
+      .share-btn {
+        width: 35px;
+        height: 35px;
+      }
+      .share-icon {
+        width: 20px;
+        height: 20px;
       }
       nav ul {
         gap: 1.2rem;
       }
-    }
-    @media (max-width: 600px) {
+      nav a {
+        font-size: 1rem;
+      }
+      .hero-logo {
+        width: clamp(200px, 60vw, 300px);
+      }
       .slide-content {
         flex-direction: column;
         align-items: center;
@@ -523,23 +515,15 @@
       .slider {
         max-width: 100vw;
       }
-      nav a {
-        font-size: 1rem;
-      }
+    }
+    @media (min-width: 601px) and (max-width: 900px) {
       .hero-logo {
-        width: 250px;
-      }
-      .about-img {
-        width: 200px;
-        height: 200px;
+        width: clamp(300px, 55vw, 500px);
       }
     }
-    @media (max-width: 900px) {
-      .slider, .slide, .slide-content {
-        min-height: 320px;
-      }
-      .slide-img img {
-        height: 200px;
+    @media (min-width: 901px) {
+      .hero-logo {
+        width: clamp(500px, 45vw, 700px);
       }
     }
   </style>
@@ -563,10 +547,21 @@
         <li><a href="#contact">Kontakt</a></li>
       </ul>
     </nav>
+    <div class="social-share-buttons">
+      <a href="#" class="share-btn whatsapp" target="_blank">
+        <img src="assets/icons/whatsapplogo.png" alt="WhatsApp" class="share-icon">
+      </a>
+      <a href="#" class="share-btn x" target="_blank">
+        <img src="assets/icons/xlogo.svg" alt="X" class="share-icon">
+      </a>
+      <a href="#" class="share-btn instagram" target="_blank">
+        <img src="assets/icons/instalogo.png" alt="Instagram" class="share-icon">
+      </a>
+    </div>
   </header>
 
   <section id="home" class="hero">
-    <img src="assets/images/Firmenlogo_2.0.png" alt="Vacation Homes by Charlie Fox Logo" class="hero-logo" onerror="this.src='https://placehold.co/960x240?text=Logo'; console.log('Logo-Bild nicht geladen');">
+    <img src="assets/images/Firmenlogo_2.1.png" alt="Vacation Homes by Charlie Fox Logo" class="hero-logo" onerror="this.src='https://placehold.co/960x240?text=Logo'; console.log('Logo-Bild nicht geladen');">
     
     <div class="slider">
       <div class="slides">
@@ -621,11 +616,11 @@
   <section id="about">
     <section class="about about-vater">
       <div class="about-inner">
-        <img src="/assets/images/Kurt.jpg" alt="Kurt Franz Peter, geistiger Gründer" class="about-img">
+        <img src="/assets/images/Kurt.jpg" alt="Kurt Franz Peter, Impuls-Geber" class="about-img">
         <div class="about-text">
-          <h2>Kurt Franz Peter – Spiritueller Gründer</h2>
+          <h2>Kurt Franz Peter – Impuls-Geber</h2>
           <p>
-            Mein Vater, Kurt Peter war auf der ganzen Welt zuhause und hat immer nach guten Unterkünften gesucht. Mit seiner Liebe zu sonnigen Plätzen auf der Welt, seiner Erfahrung und seinem Herzblut hat er den Grundstein für unsere Philosophie gelegt: Gastfreundschaft, Authentizität und ein Hauch Abenteuer. Ohne ihn gäbe es „Vacation Homes by Charlie Fox“ nicht.
+            Mein Vater, Kurt Peter (aka Charlie Fox) war auf der ganzen Welt zuhause und hat immer nach guten Unterkünften gesucht. Mit seiner Liebe zu sonnigen Plätzen auf der Welt, seiner Erfahrung und seinem Herzblut hat er den Grundstein für unsere Philosophie gelegt: Gastfreundschaft, Authentizität und ein Hauch Abenteuer. Ohne ihn gäbe es „Vacation Homes by Charlie Fox“ nicht.
           </p>
         </div>
       </div>
@@ -676,6 +671,22 @@
   </footer>
 
   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const buttons = document.querySelectorAll('.share-btn');
+      const pageUrl = encodeURIComponent(window.location.href);
+      const pageTitle = encodeURIComponent(document.title);
+
+      buttons.forEach(button => {
+        if (button.classList.contains('whatsapp')) {
+          button.href = `https://wa.me/?text=${pageTitle}%20${pageUrl}`;
+        } else if (button.classList.contains('x')) {
+          button.href = `https://x.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
+        } else if (button.classList.contains('instagram')) {
+          button.href = `https://www.instagram.com/yourprofile`; // Ersetze mit deinem Instagram-Profil
+        }
+      });
+    });
+
     let currentSlide = 0;
     const slides = document.querySelector('.slides');
     const dots = document.querySelectorAll('.slider-dots span');
