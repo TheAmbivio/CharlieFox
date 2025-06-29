@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Vacation Homes by Charlie Fox bietet traumhafte Ferienhäuser in Norditalien mit persönlicher Betreuung und authentischem Charme.">
+  <meta name="description" content="Vacation Villas by Charlie Fox bietet traumhafte Ferienhäuser in Norditalien mit persönlicher Betreuung und authentischem Charme.">
   <meta name="keywords" content="Ferienhäuser, Norditalien, Urlaub, Italien, Comer See, Ligurien, Adria, Gardasee">
-  <meta property="og:title" content="Vacation Homes by Charlie Fox">
+  <meta property="og:title" content="Vacation Villas by Charlie Fox">
   <meta property="og:description" content="Traumhafte Ferienhäuser in Norditalien mit persönlicher Betreuung und authentischem Charme.">
-  <meta property="og:image" content="/assets/images/Firmenlogo_2.1.png">
+  <meta property="og:image" content="/assets/images/Firmenlogo_2.3.png">
   <meta property="og:url" content="https://yourwebsite.com">
   <meta name="twitter:card" content="summary_large_image">
-  <title>Vacation Homes by Charlie Fox</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Courier+New&display=swap" rel="stylesheet">
+  <title>Vacation Villas by Charlie Fox</title>
+  <link rel="icon" type="image/png" href="assets/icons/WebsiteIcon.png">
   <style>
     :root {
       --black: #1A1A1A;
@@ -64,9 +64,22 @@
     nav a:hover {
       color: var(--yellow);
     }
+    .language-select {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .language-select img {
+      width: 24px;
+      height: 18px;
+      cursor: pointer;
+    }
     .hero {
       min-height: 100vh;
-      padding-top: 3em;
+      padding-top: 3rem;
       position: relative;
       display: flex;
       flex-direction: column;
@@ -74,6 +87,7 @@
       justify-content: flex-start;
       text-align: center;
       background: none;
+      margin-bottom: 3rem; /* Mehr Abstand nach unten */
     }
     .hero::before {
       content: "";
@@ -101,81 +115,73 @@
       overflow: hidden;
       position: relative;
       margin-top: 2rem;
-      min-height: 360px; /* vorher 480px */
+      min-height: 360px;
       display: flex;
       align-items: center;
     }
     .slides {
       display: flex;
       transition: transform 0.5s ease-in-out;
+      justify-content: center;
     }
     .slide {
-      min-width: 100vw;
+      min-width: 75vw;
+      max-width: 75vw;
+      opacity: 0.75;
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 2rem;
-      min-height: 360px; /* vorher 480px */
+      min-height: 360px;
     }
     .slide-content {
       display: flex;
+      flex-direction: row;
       width: 90%;
       max-width: 1200px;
       background: rgba(255, 255, 255, 0.8);
       border-radius: 1rem;
       padding: 2rem;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      align-items: flex-start;
+      gap: 2rem;
     }
-    .slide-text {
-      flex: 1;
-      text-align: left;
-      padding-right: 2rem;
-    }
-    .slide-text h3 {
-      font-size: 2rem;
-      color: var(--black);
-      margin-bottom: 1rem;
-    }
-    .slide-text p {
-      font-size: 1.2rem;
-      color: #555;
-      margin-bottom: 1rem;
-    }
-    .book-btn {
-      background-color: var(--red);
-      color: var(--white);
-      padding: 0.5rem 1rem;
-      border-radius: 9999px;
-      text-decoration: none;
-      display: inline-block;
-      transition: background-color 0.3s;
-    }
-    .book-btn:hover {
-      background-color: var(--yellow);
-    }
-    .slide-images {
-      flex: 2;
+    .main-image {
+      flex: 1.2;
       display: flex;
-      flex-direction: column;
-      gap: 1rem;
+      align-items: center;
+      justify-content: center;
     }
     .main-image img {
-      max-height: 180px; /* z.B. für kleinere Hauptbilder */
-      width: auto;
+      width: 100%;
+      max-width: 350px;
+      max-height: 350px;
+      object-fit: cover;
       border-radius: 1rem;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s;
     }
-    .main-image img:hover {
-      transform: scale(1.05);
+    .slide-right {
+      flex: 1.8;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 1.5rem;
+    }
+    .slide-text {
+      text-align: left;
+      padding-right: 0;
+      margin-bottom: 0.5rem;
     }
     .thumbnail-images {
       display: flex;
       gap: 1rem;
+      margin-top: 0.5rem;
     }
     .thumbnail-images img {
-      width: 150px;
-      height: 100px;
+      width: 100px;
+      height: 70px;
       object-fit: cover;
       border-radius: 0.5rem;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -249,7 +255,7 @@
     .houses, .about, .contact {
       padding: 4rem 1rem;
       max-width: 1200px;
-      margin: 0 auto;
+      margin: 0 auto 3rem auto; /* Mehr Abstand zwischen Sektionen */
     }
     .houses h2, .about h2, .contact h2 {
       font-size: 2.5rem;
@@ -308,20 +314,31 @@
     }
     .about {
       max-width: 1100px;
-      margin: 3rem auto 2rem auto;
-      padding: 2.5rem 1rem;
+      margin: 2rem auto;
+      padding: 0.8rem 1rem 0.8rem 1rem; /* oben rechts unten links */
       border-radius: 1.5rem;
       background: #f9f9f9;
       box-shadow: 0 2px 10px #0001;
     }
     .about-inner {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 2.5rem;
-      flex-wrap: wrap;
+      gap: 0.5rem;
     }
-    .about-inner.reverse {
-      flex-direction: row-reverse;
+    .about-header {
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    .about-name {
+      font-size: 2rem;
+      color: var(--black);
+      margin: 0;
+    }
+    .about-role {
+      font-size: 1.5rem;
+      color: var(--green);
+      margin-top: 0.5rem;
     }
     .about-img {
       width: 260px;
@@ -340,27 +357,32 @@
       flex: 1 1 300px;
       min-width: 220px;
       color: #333;
+      text-align: center; /* Zentrierter Text für Konsistenz */
+      margin-top: 0.5rem;
+      margin-bottom: 0; /* Abstand nach unten entfernen */
     }
-    .about h2 {
-      color: var(--black);
-      font-size: 2rem;
-      margin-bottom: 1rem;
+    .about-martin .about-img {
+      object-position: 1% 1%; /* Werte ggf. anpassen, bis das Gesicht mittig ist */
+    }
+
+    .about-tiziana .about-img {
+      object-position: 50% 30%; /* Werte ggf. anpassen, bis das Gesicht mittig ist */
     }
     .about-vater {
       background: linear-gradient(90deg, #fff7f0 60%, #f9f9f9 100%);
     }
     .about-martin {
       background: linear-gradient(90deg, #f9f9f9 0%, #fff7f0 40%);
-      margin-top: 1.5rem;
+      margin-top: 2rem; /* Mehr Abstand zwischen Personen */
     }
     .about-tiziana {
       background: linear-gradient(90deg, #fff7f0 60%, #f9f9f9 100%);
-      margin-top: 1.5rem;
+      margin-top: 2rem;
     }
     .contact {
       padding: 4rem 1rem;
       max-width: 1200px;
-      margin: 0 auto;
+      margin: 0 auto 3rem auto;
     }
     .contact h2 {
       font-size: 2.5rem;
@@ -454,6 +476,34 @@
       .slider {
         max-width: 100vw;
       }
+      .about {
+        padding: 0.5rem 0.2rem;
+        max-width: 98vw;
+      }
+      .about-img {
+        width: 120px;
+        height: 120px;
+      }
+      .about-text p {
+        text-align: center;
+      }
+      .slide {
+        min-width: 98vw;
+        max-width: 98vw;
+        min-height: 220px;
+        gap: 1rem;
+      }
+      .slide-content {
+        padding: 1rem;
+        gap: 1rem;
+      }
+      .main-image img {
+        max-width: 90vw;
+        max-height: 180px;
+      }
+      .contact form {
+        padding: 1rem;
+      }
     }
     @media (min-width: 601px) and (max-width: 900px) {
       .hero-logo {
@@ -465,10 +515,76 @@
         width: clamp(500px, 45vw, 700px);
       }
     }
+    @media (max-width: 900px) {
+      .slide-content {
+        flex-direction: column;
+        align-items: center;
+      }
+      .main-image img {
+        max-width: 90vw;
+        max-height: 220px;
+      }
+      .slide-right {
+        width: 100%;
+        align-items: center;
+      }
+      .slide-text {
+        text-align: center;
+      }
+      .thumbnail-images {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+    .coming-soon {
+      width: 100%;
+      text-align: center;
+      font-family: 'Poppins', Arial, sans-serif;
+      font-size: 2.5rem;
+      color: #111;
+      font-weight: 700;
+      margin: 1.2rem 0 0.8rem 0;
+      background: none;
+      padding: 0;
+      border-radius: 0;
+      position: static;
+      transform: none;
+      letter-spacing: 0.05em;
+    }
+    .founding-banner {
+      background-color: var(--yellow);
+      color: var(--black);
+      text-align: center;
+      padding: 1rem;
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .founding-banner p {
+      margin: 0;
+    }
+    .founding-banner p[data-lang] {
+      display: none;
+    }
+    .founding-banner p[data-lang="de"] {
+      display: block;
+    }
+     .about-text,
+    .about-text p,
+    .about-header,
+    .about-name,
+    .about-role {
+      color: #111 !important;
+    }
   </style>
 </head>
 <body>
   <header>
+    <div class="founding-banner">
+      <p data-lang="de">Die Firma VVCF befindet sich derzeit in der Gründungsphase. Inhalte der Website sind möglicherweise fehlerhaft. Wir freuen uns auf den Launch im Sommer 2026</p>
+      <p data-lang="it" style="display: none;">La società Vacation Villas by Charlie Fox si trova attualmente nella fase di fondazione. Non vediamo l'ora di aprire estate 2026</p>
+      <p data-lang="en" style="display: none;">Vacation Villas by Charlie Fox is currently in the founding phase. We are planning to launch Summer '26</p>
+    </div>
     <nav>
       <ul>
         <li><a href="#home">Home</a></li>
@@ -477,43 +593,37 @@
         <li><a href="#contact">Kontakt</a></li>
       </ul>
     </nav>
-    <div class="social-share-buttons">
-      <a href="#" class="share-btn whatsapp" target="_blank">
-        <img src="assets/icons/whatsapplogo.png" alt="WhatsApp" class="share-icon">
-      </a>
-      <a href="#" class="share-btn x" target="_blank">
-        <img src="assets/icons/xlogo.svg" alt="X" class="share-icon">
-      </a>
-      <a href="#" class="share-btn instagram" target="_blank">
-        <img src="assets/icons/instalogo.png" alt="Instagram" class="share-icon">
+    <div class="language-select">
+      <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" title="Deutsch" onclick="changeLanguage('de')">
+      <img src="https://flagcdn.com/24x18/it.png" alt="Italiano" title="Italiano" onclick="changeLanguage('it')">
+      <img src="https://flagcdn.com/24x18/gb.png" alt="English" title="English" onclick="changeLanguage('en')">
+    </div>
+    <div class="header-social" style="position: absolute; top: 1rem; right: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+      <a href="https://www.instagram.com/dein_instagram_name" target="_blank" rel="noopener" title="Instagram">
+        <!-- assets/icons/instagram_bw.svg -->
+<svg viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
+  <rect x="2" y="2" width="20" height="20" rx="5" stroke="black" fill="white"/>
+  <circle cx="12" cy="12" r="5" stroke="black"/>
+  <circle cx="17" cy="7" r="1" fill="black"/>
+</svg>
       </a>
     </div>
-  </header>
-
+     </header>
   <section id="home" class="hero">
-    <img src="assets/images/Firmenlogo_2.1.png"
-         alt="Vacation Homes by Charlie Fox Logo"
-         class="hero-logo"
-         style="width: 75vw; max-width: 100vw; margin-bottom: 2rem;"
-         onerror="this.src='https://placehold.co/1920x480?text=Logo'; console.log('Logo-Bild nicht geladen');">
-    
-
-   
-    />
-
-    <!-- Angepasster Slider -->
+    <img src="assets/images/Firmenlogo_2.3.png" alt="Vacation Villas by Charlie Fox Logo" class="hero-logo" style="width: 25vw; max-width: 100vw; margin-bottom: 2rem;" onerror="this.src='https://placehold.co/1920x480?text=Logo'; console.log('Logo-Bild nicht geladen');">
     <div class="slider">
       <div class="slides">
         <div class="slide">
           <div class="slide-content">
-            <div class="slide-text">
-              <h3>Casa Bella Vista</h3>
-              <p>Genießen Sie die ligurische Küste von der Casa Bella Vista aus. Dieses charmante Haus in La Spezia besticht durch seine Nähe zum Meer, eine moderne Ausstattung und einen traumhaften Garten. Perfekt für Paare oder kleine Familien.</p>
-              <a href="#contact" class="book-btn">Buchen</a>
+            <div class="main-image">
+              <img src="/assets/images/Hausbeispiel2.jpg" alt="Hauptbild Casa Bella Vista" onerror="this.src='https://placehold.co/600x400?text=Casa+Bella+Vista+Hauptbild';">
             </div>
-            <div class="slide-images">
-              <div class="main-image">
-                <img src="/assets/images/Hausbeispiel2.jpg" alt="Hauptbild Casa Bella Vista" onerror="this.src='https://placehold.co/600x400?text=Casa+Bella+Vista+Hauptbild';">
+            <div class="slide-right">
+              <div class="coming-soon">Coming Soon</div>
+              <div class="slide-text">
+                <h3>Casa Bella Vista</h3>
+                <p>Genießen Sie die ligurische Küste von der Casa Bella Vista aus. Dieses charmante Haus in La Spezia besticht durch seine Nähe zum Meer, eine moderne Ausstattung und einen traumhaften Garten. Perfekt für Paare oder kleine Familien.</p>
+                <a href="#contact" class="book-btn">Buchen</a>
               </div>
               <div class="thumbnail-images">
                 <img src="/assets/images/Hausbeispiel3.jpg" alt="Bild 1 Casa Bella Vista" onerror="this.src='https://placehold.co/150x100?text=Bild+1';">
@@ -526,14 +636,15 @@
         </div>
         <div class="slide">
           <div class="slide-content">
-            <div class="slide-text">
-              <h3>Finca del Mar</h3>
-              <p>Die Finca del Mar ist ein rustikales Juwel an der Adria, ideal für Naturliebhaber. Mit direktem Strandzugang, einem großen Garten und gemütlichen Innenräumen bietet sie Platz für bis zu 8 Personen.</p>
-              <a href="#contact" class="book-btn">Buchen</a>
+            <div class="main-image">
+              <img src="/assets/images/Hausbeispiel3.jpg" alt="Hauptbild Finca del Mar" onerror="this.src='https://placehold.co/600x400?text=Finca+del+Mar+Hauptbild';">
             </div>
-            <div class="slide-images">
-              <div class="main-image">
-                <img src="/assets/images/Hausbeispiel3.jpg" alt="Hauptbild Finca del Mar" onerror="this.src='https://placehold.co/600x400?text=Finca+del+Mar+Hauptbild';">
+            <div class="slide-right">
+              <div class="coming-soon">Coming Soon</div>
+              <div class="slide-text">
+                <h3>Finca del Mar</h3>
+                <p>Die Finca del Mar ist ein rustikales Juwel an der Adria, ideal für Naturliebhaber. Mit direktem Strandzugang, einem großen Garten und gemütlichen Innenräumen bietet sie Platz für bis zu 8 Personen.</p>
+                <a href="#contact" class="book-btn">Buchen</a>
               </div>
               <div class="thumbnail-images">
                 <img src="/assets/images/Hausbeispiel2.jpg" alt="Bild 1 Finca del Mar" onerror="this.src='https://placehold.co/150x100?text=Bild+1';">
@@ -546,14 +657,15 @@
         </div>
         <div class="slide">
           <div class="slide-content">
-            <div class="slide-text">
-              <h3>Chalet Montagna</h3>
-              <p>Das Chalet Montagna am Gardasee ist der perfekte Rückzugsort für Bergfreunde. Mit Panoramablick auf die Alpen, einer Sauna und einer großen Terrasse ist es ideal für Gruppen oder Familien.</p>
-              <a href="#contact" class="book-btn">Buchen</a>
+            <div class="main-image">
+              <img src="/assets/images/Hausbeispiel4.jpg" alt="Hauptbild Chalet Montagna" onerror="this.src='https://placehold.co/600x400?text=Chalet+Montagna+Hauptbild';">
             </div>
-            <div class="slide-images">
-              <div class="main-image">
-                <img src="/assets/images/Hausbeispiel4.jpg" alt="Hauptbild Chalet Montagna" onerror="this.src='https://placehold.co/600x400?text=Chalet+Montagna+Hauptbild';">
+            <div class="slide-right">
+              <div class="coming-soon">Coming Soon</div>
+              <div class="slide-text">
+                <h3>Chalet Montagna</h3>
+                <p>Das Chalet Montagna am Gardasee ist der perfekte Rückzugsort für Bergfreunde. Mit Panoramablick auf die Alpen, einer Sauna und einer großen Terrasse ist es ideal für Gruppen oder Familien.</p>
+                <a href="#contact" class="book-btn">Buchen</a>
               </div>
               <div class="thumbnail-images">
                 <img src="/assets/images/Hausbeispiel2.jpg" alt="Bild 1 Chalet Montagna" onerror="this.src='https://placehold.co/150x100?text=Bild+1';">
@@ -576,50 +688,45 @@
       </div>
     </div>
   </section>
-
   <section id="about">
     <section class="about about-vater">
       <div class="about-inner">
-        <img src="/assets/images/Kurt.jpg" alt="Kurt Franz Peter, Impuls-Geber" class="about-img">
+        <div class="about-header">
+          <h2 class="about-name">Kurt</h2>
+          <p class="about-role">Impuls-Geber</p>
+        </div>
+        <img src="/assets/images/Kurt.jpg" alt="Kurt Franz Peter" class="about-img">
         <div class="about-text">
-          <h2>Kurt – Impuls-Geber</h2>
-          <p>
-            Mein Vater Kurt (aka Charlie Fox, wie er häufig genannt wurde) war auf der ganzen Welt zuhause und hat immer nach guten Unterkünften in sonnigen Ländern gesucht. 
-            Mit seiner Erfahrung aus Immobilienvermietung und seiner cosmopolitischen Weitsicht hat er den Grundstein für unsere Philosophie gelegt: Gastfreundschaft, Authentizität und ein Hauch Abenteuer. <br>Ohne ihn gäbe es „Vacation Villas by Charlie Fox“ nicht.
-          </p>
+          <p>Mein Vater Kurt (aka Charlie Fox, wie er häufig genannt wurde) war auf der ganzen Welt zuhause und hat immer nach guten Unterkünften in sonnigen Ländern gesucht. Mit seiner Erfahrung aus Immobilienvermietung und seiner cosmopolitischen Weitsicht hat er den Grundstein für unsere Philosophie gelegt: Gastfreundschaft, Authentizität und ein Hauch Abenteuer. Ohne ihn gäbe es „Vacation Villas by Charlie Fox“ nicht.</p>
         </div>
       </div>
     </section>
-
     <section class="about about-martin">
-      <div class="about-inner reverse">
-        <img src="/assets/images/Martin.jpg" alt="Martin Peter, Geschäftsführer" class="about-img">
+      <div class="about-inner">
+        <div class="about-header">
+          <h2 class="about-name">Martin</h2>
+          <p class="about-role">Geschäftsführer & Gastgeber</p>
+        </div>
+        <img src="/assets/images/Martin.jpg" alt="Martin Peter" class="about-img">
         <div class="about-text">
-          <h2>Martin – Geschäftsführer & Gastgeber</h2>
-          <p>
-            Ich bin Martin, dein Ansprechpartner und Geschäftsführer von „Vacation Villas by Charlie Fox“. 
-            Mit Leidenschaft für die italienische Lebensart, modernen Service und Immobilienrenovierung führe ich unser Unternehmen mit Leidenschaft. <br>
-            Mit der gleichen Hingabe zu Immobilienanlagen wie mein Vater sie hatte, möchte ich meinen Gästen eine bezahlbare, wundervolle Urlaubserfahrung bieten. 
-            Ich setze die Qualitätsstandards so hoch wie möglich um euch einen tollen Urlaub zu ermöglichen. <br>
-            Ich freue mich auf deine Anfrage! 
-          </p>
+          <p>Ich bin Martin, dein Ansprechpartner und Geschäftsführer von „Vacation Villas by Charlie Fox“. Mit Leidenschaft für die italienische Lebensart, modernen Service und Immobilienrenovierung führe ich unser Unternehmen mit Leidenschaft. Mit der gleichen Hingabe zu Immobilienanlagen wie mein Vater sie hatte, möchte ich meinen Gästen eine bezahlbare, wundervolle Urlaubserfahrung bieten. Ich setze die Qualitätsstandards so hoch wie möglich um euch einen tollen Urlaub zu ermöglichen. Ich freue mich auf deine Anfrage!</p>
         </div>
       </div>
     </section>
-
     <section class="about about-tiziana">
       <div class="about-inner">
-        <img src="/assets/images/Tiziana.jpeg" alt="Tiziana Peter, Übersetzerin und Social Media" class="about-img">
+        <div class="about-header">
+          <h2 class="about-name">Tiziana</h2>
+          <p class="about-role">Immobilienankauf, Gästebetreuung, Übersetzerin</p>
+        </div>
+        <img src="/assets/images/Tiziana.jpeg" alt="Tiziana Peter" class="about-img">
         <div class="about-text">
-          <h2>Tiziana – Immobilienankauf, Gästebetreuung, Übersetzerin</h2>
-          <p>
-            Tizi ist das Herz unserer Kommunikation in Bella Italia. Als erfahrene Übersetzerin und sorgt sie dafür, dass unsere Gäste und Partner sich in jeder Sprache verstanden fühlen und immer bestens informiert sind. 
-            Durch die Verbundenheit zu ihrer Heimat Italien und ihre Leidenschaft für Immobilien, ist sie eine wertvolle Unterstützung bei der Auswahl und dem Ankauf neuer Objekte.          </p>
+          <p>Tizi ist das Herz unserer Kommunikation in Bella Italia. Als erfahrene Übersetzerin sorgt sie dafür, dass unsere Gäste und Partner sich in jeder Sprache verstanden fühlen und immer bestens informiert sind. Durch die Verbundenheit zu ihrer Heimat Italien und ihre Leidenschaft für Immobilien, ist sie eine wertvolle Unterstützung bei der Auswahl und dem Ankauf neuer Objekte.</p>
         </div>
       </div>
     </section>
   </section>
-
+  <img src="assets/images/Werbebanner1.png" alt="Werbebanner" style="width: 70%; display: block; margin: 24px auto 12px auto;">
   <section id="contact" class="contact">
     <h2>Kontaktieren Sie uns!</h2>
     <form action="/mail.php" method="POST">
@@ -632,20 +739,11 @@
       <button type="submit">Abschicken!</button>
     </form>
   </section>
-
   <footer>
-    <p>© 2025 Vacation Homes by Charlie Fox. Alle Rechte vorbehalten.</p>
+    <p>© 2025 Vacation Villas by Charlie Fox. Alle Rechte vorbehalten.</p>
     <p><a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p>
     <p>Stand: 04:50 AM CEST, Mittwoch, 25. Juni 2025</p>
   </footer>
-
-  <!-- Werbebanner ganz unten und zentriert -->
-  <img
-    src="assets/images/Werbebanner1.png"
-    alt="Werbebanner"
-    style="width: 25%; display: block; margin: 24px auto 12px auto;"
-  />
-
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const buttons = document.querySelectorAll('.share-btn');
@@ -658,19 +756,63 @@
         } else if (button.classList.contains('x')) {
           button.href = `https://x.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
         } else if (button.classList.contains('instagram')) {
-          button.href = `https://www.instagram.com/yourprofile`; // Ersetze mit deinem Instagram-Profil
+          button.href = `https://www.instagram.com/yourprofile`;
         }
       });
     });
 
+    function changeLanguage(lang) {
+      const translations = {
+        de: {
+          casa: 'Genießen Sie die ligurische Küste von der Casa Bella Vista aus...',
+          finca: 'Die Finca del Mar ist ein rustikales Juwel an der Adria...',
+          chalet: 'Das Chalet Montagna am Gardasee ist der perfekte Rückzugsort...'
+        },
+        it: {
+          casa: 'Goditi la costa ligure dalla Casa Bella Vista...',
+          finca: 'La Finca del Mar è una gemma rustica sull\'Adriatico...',
+          chalet: 'Il Chalet Montagna sul Lago di Garda è il rifugio perfetto...'
+        },
+        en: {
+          casa: 'Enjoy the Ligurian coast from Casa Bella Vista...',
+          finca: 'Finca del Mar is a rustic gem on the Adriatic...',
+          chalet: 'Chalet Montagna on Lake Garda is the perfect retreat...'
+        }
+      };
+      document.querySelectorAll('.slide-text p').forEach(p => {
+        const h3 = p.previousElementSibling.textContent;
+        if (h3 === 'Casa Bella Vista') p.textContent = translations[lang].casa;
+        else if (h3 === 'Finca del Mar') p.textContent = translations[lang].finca;
+        else if (h3 === 'Chalet Montagna') p.textContent = translations[lang].chalet;
+      });
+      // Banner übersetzen
+      const banner = document.querySelector('.founding-banner');
+      banner.querySelectorAll('p').forEach(p => p.style.display = 'none');
+      const bannerLang = banner.querySelector(`p[data-lang="${lang}"]`);
+      if (bannerLang) {
+        bannerLang.style.display = 'block';
+      } else {
+        banner.querySelector('p').style.display = 'block'; // Fallback: Deutsch
+      }
+    }
+  </script>
+  <script>
     let currentSlide = 0;
     const slides = document.querySelector('.slides');
     const dots = document.querySelectorAll('.slider-dots span');
-    const totalSlides = dots.length;
+    const totalSlides = document.querySelectorAll('.slide').length; // Dynamische Anzahl der Slides
     let autoSlide;
 
     function showSlide(index) {
-      slides.style.transform = `translateX(-${index * 100}vw)`;
+      const slideWidth = document.querySelector('.slide').offsetWidth;
+      const sliderWidth = document.querySelector('.slider').offsetWidth;
+      let offset;
+      if (index === 0) {
+        offset = 0;
+      } else {
+        offset = (slideWidth * index) - ((sliderWidth - slideWidth) / 2);
+      }
+      slides.style.transform = `translateX(-${offset}px)`;
       dots.forEach((dot, i) => {
         dot.classList.toggle('active', i === index);
       });
@@ -707,12 +849,29 @@
         stopAutoSlide();
         currentSlide = index;
         showSlide(currentSlide);
-        startAutoSlide();
       });
     });
 
     showSlide(0);
     startAutoSlide();
   </script>
+  <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name    = strip_tags($_POST["name"]);
+    $email   = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+    $message = strip_tags($_POST["message"]);
+
+    $to      = "martin@vacationvillas-by-charliefox.net";
+    $subject = "Neue Nachricht von der Website";
+    $body    = "Name: $name\nE-Mail: $email\nNachricht:\n$message";
+    $headers = "From: $email\r\nReply-To: $email\r\n";
+
+    if (mail($to, $subject, $body, $headers)) {
+        echo "Danke für deine Nachricht!";
+    } else {
+        echo "Fehler beim Senden. Bitte versuche es später erneut.";
+    }
+}
+?>
 </body>
 </html>
