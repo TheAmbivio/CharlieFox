@@ -13,6 +13,7 @@
   <title>Vacation Villas by Charlie Fox</title>
   <link rel="icon" type="image/png" href="assets/icons/WebsiteIcon.png">
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Montserrat:wght@700&display=swap');
     :root {
       --black: #1A1A1A;
       --yellow: #FFB500;
@@ -32,10 +33,15 @@
     header {
       background-color: var(--white);
       color: #333;
-      padding: 1rem;
+      padding: 2.5rem 1rem 1.5rem 1rem; /* mehr Platz oben */
       width: 100vw;
       z-index: 1000;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      position: relative;
+      min-height: 120px; /* optional, für mehr Höhe */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       position: relative;
     }
     nav {
@@ -54,10 +60,12 @@
       padding: 0;
     }
     nav a {
+      font-family: 'Luckiest Guy', 'Montserrat', Arial, sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
       color: var(--black);
-      font-family: 'Courier New', monospace;
-      font-size: 1.8rem;
-      font-weight: 500;
       text-decoration: none;
       transition: color 0.3s;
     }
@@ -66,11 +74,13 @@
     }
     .language-select {
       position: absolute;
-      top: 1rem;
-      left: 1rem;
+      top: 1.2rem;
+      left: 50%;
+      transform: translateX(-50%);
       display: flex;
       gap: 0.5rem;
       align-items: center;
+      z-index: 2;
     }
     .language-select img {
       width: 24px;
@@ -103,7 +113,7 @@
       z-index: 1;
     }
     .hero-logo {
-      width: 960px;
+      width: 1200px;
       max-width: 80vw;
       height: auto;
       display: block;
@@ -319,16 +329,19 @@
       border-radius: 1.5rem;
       background: #f9f9f9;
       box-shadow: 0 2px 10px #0001;
+      padding-top: 0.8rem;
+     
     }
     .about-inner {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.5rem;
+      gap: 20; /* Kein Abstand zwischen den Elementen */
+      max-height: 550px;
     }
     .about-header {
       text-align: center;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0; /* Kein Abstand unter der Überschrift */
     }
     .about-name {
       font-size: 2rem;
@@ -349,6 +362,7 @@
       background: #fff;
       flex-shrink: 0;
       transition: transform 0.3s;
+      margin-bottom: 0.2rem; /* Minimaler Abstand unter dem Bild */
     }
     .about-img:hover {
       transform: scale(1.05);
@@ -358,8 +372,13 @@
       min-width: 220px;
       color: #333;
       text-align: center; /* Zentrierter Text für Konsistenz */
-      margin-top: 0.5rem;
-      margin-bottom: 0; /* Abstand nach unten entfernen */
+      margin-top: 2rem;
+      margin-bottom: 0; /* Kein zusätzlicher Abstand nach unten */
+      padding: 0;
+    }
+    .about-text p {
+      margin: 0; /* Entfernt Standard-Abstand unter dem Text */
+      padding: 0;
     }
     .about-martin .about-img {
       object-position: 1% 1%; /* Werte ggf. anpassen, bis das Gesicht mittig ist */
@@ -552,13 +571,15 @@
       letter-spacing: 0.05em;
     }
     .founding-banner {
-      background-color: var(--yellow);
-      color: var(--black);
+      background: linear-gradient(90deg, #fff7f0 60%, #f9f9f9 100%);
+      color: #CE2B37; /* schönes Rot */
       text-align: center;
       padding: 1rem;
       font-weight: 600;
       font-size: 1.2rem;
-      margin-bottom: 1rem;
+      margin-bottom: 2.5rem; /* vorher: 1rem, jetzt mehr Abstand zum Header */
+      border-radius: 1rem;
+      box-shadow: 0 2px 8px #0001;
     }
     .founding-banner p {
       margin: 0;
@@ -610,7 +631,7 @@
     </div>
      </header>
   <section id="home" class="hero">
-    <img src="assets/images/Firmenlogo_2.3.png" alt="Vacation Villas by Charlie Fox Logo" class="hero-logo" style="width: 25vw; max-width: 100vw; margin-bottom: 2rem;" onerror="this.src='https://placehold.co/1920x480?text=Logo'; console.log('Logo-Bild nicht geladen');">
+    <img src="assets/images/Firmenlogo_2.3.png" alt="Vacation Villas by Charlie Fox Logo" class="hero-logo" style="width: 40vw; max-width: 100vw; margin-bottom: 2rem;" onerror="this.src='https://placehold.co/1920x480?text=Logo'; console.log('Logo-Bild nicht geladen');">
     <div class="slider">
       <div class="slides">
         <div class="slide">
@@ -726,7 +747,7 @@
       </div>
     </section>
   </section>
-  <img src="assets/images/Werbebanner1.png" alt="Werbebanner" style="width: 70%; display: block; margin: 24px auto 12px auto;">
+  <img src="assets/images/Werbebanner1.png" alt="Werbebanner" style="width: 90%; display: block; margin: 24px auto 12px auto;">
   <section id="contact" class="contact">
     <h2>Kontaktieren Sie uns!</h2>
     <form name="contact" method="POST" data-netlify="true">
