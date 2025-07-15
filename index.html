@@ -130,7 +130,6 @@
     .slides {
       display: flex;
       transition: transform 0.5s ease-in-out;
-      width: 300vw; /* Bei 3 Slides, sonst: 100vw * Anzahl Slides */
     }
     .slide {
       flex: 0 0 100vw;
@@ -445,7 +444,7 @@
       border-radius: 1rem;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
-    /* Neuer CSS für Buchungssystem */
+    /* CSS für Buchungssystem */
     .book-btn {
       background-color: var(--red);
       color: var(--white);
@@ -455,6 +454,7 @@
       display: inline-block;
       transition: background-color 0.3s;
       cursor: pointer;
+      border: none;
     }
     .book-btn:hover {
       background-color: var(--yellow);
@@ -462,7 +462,7 @@
     .modal {
       display: none;
       position: fixed;
-      z-index: 9999; /* Erhöhe den Wert! */
+      z-index: 1001;
       left: 0;
       top: 0;
       width: 100%;
@@ -497,12 +497,13 @@
       display: block;
       margin-bottom: 0.5rem;
     }
-    .booking-form input {
+    .booking-form input, .booking-form textarea {
       width: 100%;
-      padding: 0.75rem;
+      padding: 0.5rem;
       margin-bottom: 1rem;
-      border: 2px solid var(--yellow);
+      border: 1px solid var(--yellow);
       border-radius: 0.5rem;
+      box-sizing: border-box;
     }
     .booking-form button {
       background-color: var(--red);
@@ -512,6 +513,7 @@
       border-radius: 9999px;
       cursor: pointer;
       width: 100%;
+      transition: background-color 0.3s;
     }
     .booking-form button:hover {
       background-color: var(--yellow);
@@ -730,8 +732,8 @@
       <button type="submit" data-lang="de">Abschicken!</button>
     </form>
   </section>
-  <!-- Buchungs-Modal (eins für alle, wird dynamisch gefüllt) -->
-  <div id="bookingModal" class="modal" style="display: block;">
+  <!-- Buchungs-Modal -->
+  <div id="bookingModal" class="modal" style="display: none;">
     <div class="modal-content">
       <span class="close" onclick="closeBookingModal()">×</span>
       <h2 id="houseTitle">Buchung für [Haus]</h2>
@@ -739,16 +741,16 @@
         <input type="hidden" name="form-name" value="booking">
         <input type="hidden" id="houseName" name="house">
         <label for="checkin">Check-in Datum</label>
-        <input type="date" id="checkin" name="checkin" required min="2025-07-16"> <!-- Min-Datum ab morgen -->
+        <input type="date" id="checkin" name="checkin" required min="2025-07-16">
         <label for="checkout">Check-out Datum</label>
         <input type="date" id="checkout" name="checkout" required>
         <label for="adults">Erwachsene</label>
         <input type="number" id="adults" name="adults" min="1" max="8" value="1" required>
         <label for="children">Kinder</label>
         <input type="number" id="children" name="children" min="0" max="4" value="0" required>
-        <label for="name">Name</label>
+        <label for="bookingName">Name</label>
         <input type="text" id="bookingName" name="name" required>
-        <label for="email">E-Mail</label>
+        <label for="bookingEmail">E-Mail</label>
         <input type="email" id="bookingEmail" name="email" required>
         <p id="bookingError" class="error" style="display: none;"></p>
         <button type="submit">Buchung senden</button>
@@ -919,7 +921,7 @@
       if (index >= totalSlides) index = 0;
       if (index < 0) index = totalSlides - 1;
       currentSlide = index;
-      slidesContainer.style.transform = `translateX(-${(index * (100 / totalSlides))}%)`;
+      slidesContainer.style.transform = `translateX(-${index * 100}%)`;
       dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
     }
 
@@ -977,10 +979,9 @@
     const errorMsg = document.getElementById('bookingError');
 
     function openBookingModal(houseName) {
-      console.log('Modal öffnen:', houseName); // Debug-Ausgabe
       houseTitle.textContent = `Buchung für ${houseName}`;
       houseNameInput.value = houseName;
-      document.getElementById('bookingModal').style.display = 'block';
+      modal.style.display = "block";
       errorMsg.style.display = "none";
     }
 
