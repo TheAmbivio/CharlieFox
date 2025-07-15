@@ -130,12 +130,12 @@
     .slides {
       display: flex;
       transition: transform 0.5s ease-in-out;
-      justify-content: center;
+      width: 300vw; /* Bei 3 Slides, sonst: 100vw * Anzahl Slides */
     }
     .slide {
-      min-width: 75vw;
-      max-width: 75vw;
-      opacity: 0.75;
+      flex: 0 0 100vw;
+      min-width: 100vw;
+      max-width: 100vw;
       position: relative;
       display: flex;
       align-items: center;
@@ -445,6 +445,81 @@
       border-radius: 1rem;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
+    /* Neuer CSS für Buchungssystem */
+    .book-btn {
+      background-color: var(--red);
+      color: var(--white);
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      display: inline-block;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+    .book-btn:hover {
+      background-color: var(--yellow);
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999; /* Erhöhe den Wert! */
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
+      padding-top: 60px;
+    }
+    .modal-content {
+      background-color: var(--white);
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 600px;
+      border-radius: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .booking-form label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .booking-form input {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 2px solid var(--yellow);
+      border-radius: 0.5rem;
+    }
+    .booking-form button {
+      background-color: var(--red);
+      color: var(--white);
+      padding: 0.75rem;
+      border: none;
+      border-radius: 9999px;
+      cursor: pointer;
+      width: 100%;
+    }
+    .booking-form button:hover {
+      background-color: var(--yellow);
+    }
+    .error {
+      color: var(--red);
+      font-size: 0.9rem;
+    }
     @media (max-width: 600px) {
       nav ul {
         gap: 1.2rem;
@@ -472,6 +547,9 @@
       .about-img {
         width: 120px;
         height: 120px;
+      }
+      .modal-content {
+        width: 90%;
       }
     }
     @media (max-width: 900px) {
@@ -533,7 +611,7 @@
               <div class="slide-text">
                 <h3 data-lang="de">Casa Bella Vista</h3>
                 <p data-lang="de">Genießen Sie die ligurische Küste von der Casa Bella Vista aus. Dieses charmante Haus in La Spezia besticht durch seine Nähe zum Meer, eine moderne Ausstattung und einen traumhaften Garten. Perfekt für Paare oder kleine Familien.</p>
-                <a href="#contact" class="book-btn" data-lang="de">Buchen</a>
+                <button class="book-btn" onclick="openBookingModal('Casa Bella Vista')">Buchen</button>
               </div>
               <div class="thumbnail-images">
                 <img src="/assets/images/Hausbeispiel3.jpg" alt="Bild 1 Casa Bella Vista" loading="lazy" onerror="this.src='https://placehold.co/100x70?text=Bild+1';">
@@ -544,7 +622,6 @@
             </div>
           </div>
         </div>
-        <!-- Weitere Slides ähnlich strukturieren -->
         <div class="slide">
           <div class="slide-content">
             <div class="main-image">
@@ -555,7 +632,7 @@
               <div class="slide-text">
                 <h3 data-lang="de">Finca del Mar</h3>
                 <p data-lang="de">Die Finca del Mar ist ein rustikales Juwel an der Adria, ideal für Naturliebhaber. Mit direktem Strandzugang, einem großen Garten und gemütlichen Innenräumen bietet sie Platz für bis zu 8 Personen.</p>
-                <a href="#contact" class="book-btn" data-lang="de">Buchen</a>
+                <button class="book-btn" onclick="openBookingModal('Finca del Mar')">Buchen</button>
               </div>
               <div class="thumbnail-images">
                 <img src="/assets/images/Hausbeispiel2.jpg" alt="Bild 1 Finca del Mar" loading="lazy" onerror="this.src='https://placehold.co/100x70?text=Bild+1';">
@@ -576,7 +653,7 @@
               <div class="slide-text">
                 <h3 data-lang="de">Chalet Montagna</h3>
                 <p data-lang="de">Das Chalet Montagna am Gardasee ist der perfekte Rückzugsort für Bergfreunde. Mit Panoramablick auf die Alpen, einer Sauna und einer großen Terrasse ist es ideal für Gruppen oder Familien.</p>
-                <a href="#contact" class="book-btn" data-lang="de">Buchen</a>
+                <button class="book-btn" onclick="openBookingModal('Chalet Montagna')">Buchen</button>
               </div>
               <div class="thumbnail-images">
                 <img src="/assets/images/Hausbeispiel2.jpg" alt="Bild 1 Chalet Montagna" loading="lazy" onerror="this.src='https://placehold.co/100x70?text=Bild+1';">
@@ -653,6 +730,31 @@
       <button type="submit" data-lang="de">Abschicken!</button>
     </form>
   </section>
+  <!-- Buchungs-Modal (eins für alle, wird dynamisch gefüllt) -->
+  <div id="bookingModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeBookingModal()">×</span>
+      <h2 id="houseTitle">Buchung für [Haus]</h2>
+      <form class="booking-form" name="booking" method="POST" data-netlify="true" onsubmit="validateBooking(event)">
+        <input type="hidden" name="form-name" value="booking">
+        <input type="hidden" id="houseName" name="house">
+        <label for="checkin">Check-in Datum</label>
+        <input type="date" id="checkin" name="checkin" required min="2025-07-16"> <!-- Min-Datum ab morgen -->
+        <label for="checkout">Check-out Datum</label>
+        <input type="date" id="checkout" name="checkout" required>
+        <label for="adults">Erwachsene</label>
+        <input type="number" id="adults" name="adults" min="1" max="8" value="1" required>
+        <label for="children">Kinder</label>
+        <input type="number" id="children" name="children" min="0" max="4" value="0" required>
+        <label for="name">Name</label>
+        <input type="text" id="bookingName" name="name" required>
+        <label for="email">E-Mail</label>
+        <input type="email" id="bookingEmail" name="email" required>
+        <p id="bookingError" class="error" style="display: none;"></p>
+        <button type="submit">Buchung senden</button>
+      </form>
+    </div>
+  </div>
   <footer>
     <p>© <span id="year"></span> Charly Fox UG. Alle Rechte vorbehalten.</p>
     <p><a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p>
@@ -817,7 +919,7 @@
       if (index >= totalSlides) index = 0;
       if (index < 0) index = totalSlides - 1;
       currentSlide = index;
-      slidesContainer.style.transform = `translateX(-${index * 100}%)`;  // Hier der Fix: Kein Leerzeichen vor %
+      slidesContainer.style.transform = `translateX(-${(index * (100 / totalSlides))}%)`;
       dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
     }
 
@@ -867,6 +969,41 @@
 
     showSlide(0);
     startAutoSlide();
+
+    // Buchungssystem JS
+    const modal = document.getElementById('bookingModal');
+    const houseTitle = document.getElementById('houseTitle');
+    const houseNameInput = document.getElementById('houseName');
+    const errorMsg = document.getElementById('bookingError');
+
+    function openBookingModal(houseName) {
+      console.log('Modal öffnen:', houseName); // Debug-Ausgabe
+      houseTitle.textContent = `Buchung für ${houseName}`;
+      houseNameInput.value = houseName;
+      document.getElementById('bookingModal').style.display = 'block';
+      errorMsg.style.display = "none";
+    }
+
+    function closeBookingModal() {
+      modal.style.display = "none";
+    }
+
+    function validateBooking(event) {
+      const checkin = document.getElementById('checkin').value;
+      const checkout = document.getElementById('checkout').value;
+      if (new Date(checkout) <= new Date(checkin)) {
+        errorMsg.textContent = "Check-out muss nach Check-in liegen.";
+        errorMsg.style.display = "block";
+        event.preventDefault();
+      }
+    }
+
+    // Schließe Modal bei Klick außerhalb
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        closeBookingModal();
+      }
+    }
   </script>
 </body>
 </html>
